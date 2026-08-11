@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { refine, z } from "zod";
+import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
@@ -17,7 +17,6 @@ import {
 } from "@/components/ui/card";
 import {
   Field,
-  FieldDescription,
   FieldError,
   FieldGroup,
   FieldLabel,
@@ -88,10 +87,24 @@ export function RegisterForm() {
       <CardContent>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <div className="flex flex-col gap-4">
-            <Button type="button" variant="outline">
+            <Button type="button" variant="outline" className="h-10">
+              <Image
+                alt="Github image"
+                src="/logos/github.svg"
+                width={20}
+                height={20}
+                className="mr-1"
+              />
               Continue with GitHub
             </Button>
-            <Button type="button" variant="outline">
+            <Button type="button" variant="outline" className="h-10">
+              <Image
+                alt="Google image"
+                src="/logos/google.svg"
+                width={20}
+                height={20}
+                className="mr-1"
+              />
               Continue with Google
             </Button>
           </div>
@@ -110,6 +123,7 @@ export function RegisterForm() {
                       type="email"
                       placeholder="you@example.com"
                       disabled={isPending}
+                      className="h-10"
                     />
                     {fieldState.invalid && (
                       <FieldError errors={[fieldState.error]} />
@@ -133,6 +147,7 @@ export function RegisterForm() {
                       type="password"
                       placeholder="********"
                       disabled={isPending}
+                      className="h-10"
                     />
                     {fieldState.invalid && (
                       <FieldError errors={[fieldState.error]} />
@@ -158,6 +173,7 @@ export function RegisterForm() {
                       type="password"
                       placeholder="********"
                       disabled={isPending}
+                      className="h-10"
                     />
                     {fieldState.invalid && (
                       <FieldError errors={[fieldState.error]} />
@@ -167,13 +183,16 @@ export function RegisterForm() {
               />
             </FieldGroup>
 
-            <Button type="submit" className="w-full">
+            <Button type="submit" className="w-full h-10">
               Sign up
             </Button>
           </div>
           <p className="text-center text-sm mt-2 font-medium">
             Already have an account?{" "}
-            <Link href="/login" className="underline underline-offset-4">
+            <Link
+              href="/login"
+              className="underline underline-offset-4 text-primary"
+            >
               Login
             </Link>
           </p>
